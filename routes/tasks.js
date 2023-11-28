@@ -4,19 +4,19 @@ const { Task, Animal } = require('../database/models');
 
 const ash = require('express-async-handler');
 
-//get all task
+//read all task
 router.get('/', ash(async(req, res) => {
   let tasks = await Task.findAll();
   res.status(200).json(tasks);
 }));
 
-//get task by id
+//read one task by id
 router.get('/:id', ash(async(req, res) => {
   let task = await Task.findByPk(req.params.id, {include: [Animal]});
   res.status(200).json(task);
 }));
 
-//add new task
+//create new task
 router.post('/', function(req, res, next) {
   Task.create(req.body)
     .then(createdTask => res.status(200).json(createdTask))
@@ -34,7 +34,7 @@ router.delete('/:id', function(req, res, next) {
     .catch(err => next(err));
 });
 
-//edit task
+//update task
 router.put('/:id', ash(async(req, res) => {
   await Task.update(req.body,
         { where: {id: req.params.id} }
