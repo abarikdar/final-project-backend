@@ -6,13 +6,13 @@ const ash = require('express-async-handler');
 
 //read all animals
 router.get('/', ash(async(req, res) => {
-  let animals = await Animal.findAll({include: [Course]});
+  let animals = await Animal.findAll({include: [Task]});
   res.status(200).json(animals);
 }));
 
 //read one animal by id
 router.get('/:id', ash(async(req, res) => {
-  let animal = await Animal.findByPk(req.params.id, {include: [Course]});
+  let animal = await Animal.findByPk(req.params.id, {include: [Task]});
   res.status(200).json(animal);
 }));
 
