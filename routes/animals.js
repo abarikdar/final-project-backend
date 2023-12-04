@@ -28,8 +28,12 @@ router.delete('/:id', ash(async(req, res) => {
 
 //create animal
 router.post('/', ash(async(req, res) => {
-  let newAnimal = await Animal.create(req.body);
-  res.status(200).json(newAnimal);
+  try {
+    let newAnimal = await Animal.create(req.body);
+    res.status(200).json(newAnimal);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 }));
 
 //update animal
