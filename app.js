@@ -1,11 +1,23 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require("express");
+const app = express();
+const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('test')
-})
+const db = require("./database/db"); 
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+const indexRouter = require("./routes/index");
+
+app.use(express.json());
+
+app.use("/", indexRouter);
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+db.sync().then(() => {
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
+}).catch(error => {
+    console.error('Unable to connect to the database:', error);
+});
