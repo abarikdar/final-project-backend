@@ -39,6 +39,8 @@ const Animal = db.define("animal", {
     },
 
 
+}, {
+    tableName: 'animals'
 });
 
-nodule.exports = Animal;
+module.exports = Animal;
