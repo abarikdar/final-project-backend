@@ -30,6 +30,14 @@ const Animal = db.define("animal", {
         type: Sequelize.STRING,
     },
 
+    isNeutered: {
+        type: Sequelize.BOOLEAN,
+    },
+
+    isVaccinated: {
+        type: Sequelize.BOOLEAN,
+    },
+
     arrivalDate: {
         type: Sequelize.DATE,
     },
@@ -38,9 +46,25 @@ const Animal = db.define("animal", {
         type: Sequelize.TEXT,
     },
 
+    image: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn('NOW'),
+    },
+
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn('NOW'),
+    },
 
 }, {
-    tableName: 'animals'
+    tableName: 'animals',
 });
 
 module.exports = Animal;

@@ -23,10 +23,17 @@ const Task = db.define("task", {
         type: Sequelize.STRING,
     },
 
-    animalID: {
-        type: Sequelize.INTEGER,
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn('NOW'),
     },
-    
+
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn('NOW'),
+    },
 
 });
 
