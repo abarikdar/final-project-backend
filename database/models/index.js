@@ -1,7 +1,9 @@
 const Animal  = require('./Animal');
 const Task  = require('./Task');
 
-Task.belongsTo(Animal);
+Task.belongsTo(Animal, {
+  onDelete: 'CASCADE',
+});
 Animal.hasMany(Task);
 
 module.exports = {
