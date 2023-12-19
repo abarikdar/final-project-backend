@@ -23,7 +23,8 @@ const Animal = db.define("animal", {
     },
 
     gender: {
-        type: Sequelize.STRING(6),
+        type: Sequelize.ENUM,
+        values: ['MALE', 'FEMALE'],
         allowNull: false
     },
 
