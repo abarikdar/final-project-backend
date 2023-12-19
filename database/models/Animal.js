@@ -22,6 +22,11 @@ const Animal = db.define("animal", {
         allowNull: false
     },
 
+    gender: {
+        type: Sequelize.STRING(6),
+        allowNull: false
+    },
+
     healthStatus: {
         type: Sequelize.STRING,
     },
@@ -52,15 +57,15 @@ const Animal = db.define("animal", {
     },
 
     createdAt: {
-      allowNull: false,
-      type: Sequelize.DATE,
-      defaultValue: Sequelize.fn('NOW'),
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('NOW'),
     },
 
     updatedAt: {
-      allowNull: false,
-      type: Sequelize.DATE,
-      defaultValue: Sequelize.fn('NOW'),
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('NOW'),
     },
 
 }, {
